@@ -21,8 +21,6 @@ public class Ejercicio5 {
         System.out.println("15- El resultado de 10 <= 2 * 5 AND 3 < 4 OR NOT (8>7) AND 3 * 2 <= 4 * 2 - 1 es: " + true);
 
 
-        System.out.println("holaholahoal");
-
     }
 
 }
