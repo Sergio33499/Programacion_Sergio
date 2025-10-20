@@ -6,17 +6,18 @@ public class Ejercicio30 {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Escribe -salir- para terminar ");
+        System.out.println("Escribe -0- para terminar cuando haya una operacion ");
 
-        String operacion;
+        String operacion = "";
 
-        while (true){
+        //cambiar
+        while (!operacion.equals("0")){
             System.out.println("Primer numero: ");
             double num1 = scanner.nextDouble();
 
             System.out.print("Operación (+, -, *, /, %): ");
             operacion = scanner.next();
-            if (operacion.equals("salir")) break;
+            if (operacion.equals("0")) break;
 
             System.out.println("Segundo numero: ");
             double num2 = scanner.nextDouble();

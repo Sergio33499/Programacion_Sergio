@@ -7,11 +7,11 @@ public class Ejercicio24 {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Introduce las notas de los alumnos:");
-        int nota;
+        double nota;
         int aprobados = 0;
         int suspendidos = 0;
 
-        nota = scanner.nextInt();
+        nota = scanner.nextDouble();
 
         while (nota != 0){
 
@@ -20,7 +20,7 @@ public class Ejercicio24 {
             }else {
                 suspendidos++;
             }
-            nota = scanner.nextInt();
+            nota = scanner.nextDouble();
 
         }
         System.out.println("Hay " + aprobados + " alumnos aprobados y " + suspendidos + " alumnos suspendidos");
