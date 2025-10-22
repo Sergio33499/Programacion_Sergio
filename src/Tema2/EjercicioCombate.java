@@ -68,6 +68,7 @@ public class EjercicioCombate {
        while (vidaJ1 > 0 && vidaJ2 > 0){
            System.out.println();
        }
+       System.out.println();
 
 
 
