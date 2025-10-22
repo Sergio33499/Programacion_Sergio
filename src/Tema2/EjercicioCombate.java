@@ -52,6 +52,8 @@ public class EjercicioCombate {
 
            suma2 = velocidadJ2 + ataqueJ2 + defensaJ2 + vidaJ2;
 
+
+           //Validaciones
            if (velocidadJ2 < 1 || ataqueJ2 < 1|| defensaJ2 < 1 || vidaJ2 < 1 || velocidadJ2 > 200 || ataqueJ2 > 200 || defensaJ2 > 200 || vidaJ2 > 200){
                System.out.println("ERROR: Los atributos tienen que estar entre 1-200");
            } else if (suma2 > 500) {
@@ -66,9 +68,14 @@ public class EjercicioCombate {
        int turno = 1;
 
        while (vidaJ1 > 0 && vidaJ2 > 0){
-           System.out.println();
+           System.out.println("\n--- Turno " + turno + " ---");
+
+           //Decidir quien ataca primero
+           if (velocidadJ1 >= velocidadJ2){
+
+           }
        }
-       System.out.println();
+
 
 
 
