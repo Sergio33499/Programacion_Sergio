@@ -67,20 +67,112 @@ public class EjercicioCombate {
        System.out.println("¡COMIENZA EL COMBATE!");
        int turno = 1;
 
+       int vidaMax1 = vidaJ1;
+       int vidaMax2 = vidaJ2;
+
        while (vidaJ1 > 0 && vidaJ2 > 0){
            System.out.println("\n--- Turno " + turno + " ---");
 
-           //Decidir quien ataca primero
-           if (velocidadJ1 >= velocidadJ2){
+           //Decidir quien ataca primero por el que tenga mayor velocidad
+           double factorAtaque;
+           double factorDefensa;
+           int daño1;
+           int daño2;
 
+           if (velocidadJ1 >= velocidadJ2){
+               //Jugador 1 ataca
+               factorAtaque = 0.6 + rand.nextDouble() * 0.4;
+               factorDefensa = 0.2 + rand.nextDouble() * 0.4;
+
+               daño1 = (int) Math.round((ataqueJ1 * factorAtaque) - (defensaJ2 * factorDefensa));
+               if (daño1 < 1){
+                   daño1 = 1;
+               }
+               vidaJ2 -= daño1;
+               if (vidaJ2 < 0){
+                   vidaJ2 = 0;
+               }
+               System.out.println("Jugador 1 ataca e inflinge " + daño1 + " de daño.");
+
+               //Si el jugador 2 sigue vivo contraataca
+
+               if (vidaJ2 > 0){
+                   factorAtaque = 0.6 + rand.nextDouble() * 0.4;
+                   factorDefensa = 0.2 + rand.nextDouble() * 0.4;
+                   daño2 = (int) Math.round((ataqueJ2 * factorAtaque) - (defensaJ1 * factorDefensa));
+                   if (daño2 < 1){
+                       daño2 = 1;
+                   }
+                   vidaJ1 -= daño2;
+                   if (vidaJ1 < 0){
+                       vidaJ1 = 0;
+                   }
+                   System.out.println("Jugador 2 ataca e inflinge " + daño2 + " de daño.");
+               }
+
+           }else {//Si la velocidad del jugador 2 es mayor
+               factorAtaque = 0.6 + rand.nextDouble() * 0.4;
+               factorDefensa = 0.2 + rand.nextDouble() * 0.4;
+               daño2 = (int) Math.round((ataqueJ2 * factorAtaque) - (defensaJ1 * factorDefensa));
+               if (daño2 < 1){
+                   daño2 = 1;
+               }
+               if (vidaJ1 < 0){
+                   vidaJ1 = 0;
+               }
+               System.out.println("Jugador 2 ataca e inflinge " + daño2 + " de daño.");
+
+               //Si el jugador 1 sigue con vida contraataca
+               if (vidaJ1 > 0){
+                   factorAtaque = 0.6 + rand.nextDouble() * 0.4;
+                   factorDefensa = 0.2 + rand.nextDouble() * 0.4;
+                   daño1 = (int) Math.round((ataqueJ1 * factorAtaque) - (defensaJ2 * factorDefensa));
+                   if (daño1 < 1){
+                       daño1 = 1;
+                   }
+                   vidaJ2 -= daño1;
+                   if (vidaJ2 < 0){
+                       vidaJ2 = 0;
+                   }
+                   System.out.println("Jugador 1 ataca e inlfinge " + daño1 + " de daño");
+               }
            }
+
+           //Mostrar barra de vida de cada jugador
+           System.out.println("Jugador1: [");
+           int barra1 = (int) ((vidaJ1 * 20.0) / vidaMax1);
+           for (int i = 0; i < 20; i++) {
+               if (i < barra1){
+                   System.out.print("-");
+               }else {
+                   System.out.println(" ");
+               }
+           }
+           System.out.println("] " + vidaJ1 + " PV");
+
+           System.out.println("Jugador2: [");
+           int barra2 = (int) ((vidaJ2 * 20.0) / vidaMax2);
+           for (int i = 0; i < 20; i++) {
+               if (i < barra2){
+                   System.out.print("-");
+               }else {
+                   System.out.println(" ");
+               }
+           }
+           System.out.println("] " + vidaJ2 + " PV");
+           turno++;
        }
 
+       //Resultado final
 
-
-
-
-
+       System.out.println("\n--- RESULTADO FINAL ---");
+       if (vidaJ1 <= 0 && vidaJ2 <= 0){
+           System.out.println("¡EMPATE! ambos jugadores han muerto");
+       } else if (vidaJ1 <= 0) {
+           System.out.println("GANA EL JUGADOR 2");
+       }else{
+           System.out.println("GANA EL JUGADOR 1");
+       }
 
 
    }
