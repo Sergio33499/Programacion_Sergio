@@ -16,69 +16,128 @@ public class EjercicioCombate {
         System.out.println("----->EMPIEZA EL COMBATE<-----");
 
         //---JUGADOR 1---
+        //---JUGADOR 1---
         while (!valido1){
-            System.out.println("Introduce los datos del Jugador1 (1-200)");
-            System.out.println("Introduce la velocidad: ");
-            velocidadJ1 = scanner.nextInt();
-            System.out.println("Introduce el ataque: ");
-            ataqueJ1 = scanner.nextInt();
-            System.out.println("Introduce la defensa: ");
-            defensaJ1 = scanner.nextInt();
-            System.out.println("Introduce la vida: ");
-            vidaJ1 = scanner.nextInt();
-            System.out.print("Crítico (0-100): ");
-            criticoJ1 = scanner.nextInt();
-            System.out.print("Regeneración: ");
-            regeneracionJ1 = scanner.nextInt();
+            System.out.println("¿Quieres introducir los atributos del Jugador 1 manualmente (1) o generarlos aleatoriamente (0)?");
+            int opcion = scanner.nextInt();
 
-            suma1 = velocidadJ1 + ataqueJ1 + defensaJ1 + vidaJ1;
+            if (opcion == 0) {
+                // Generar aleatoriamente
+                do {
+                    velocidadJ1 = rand.nextInt(200) + 1;
+                    ataqueJ1 = rand.nextInt(200) + 1;
+                    defensaJ1 = rand.nextInt(200) + 1;
+                    vidaJ1 = rand.nextInt(200) + 1;
+                    suma1 = velocidadJ1 + ataqueJ1 + defensaJ1 + vidaJ1;
+                } while (suma1 > 500);
 
-            if (velocidadJ1 < 1 || ataqueJ1 < 1 || defensaJ1 < 1 || vidaJ1 < 1
-                    || velocidadJ1 > 200 || ataqueJ1 > 200 || defensaJ1 > 200 || vidaJ1 > 200){
-                System.out.println("ERROR: Los atributos tienen que estar entre 1-200");
-                System.out.println("Pulsa ENTER para volver a intentarlo...");
-                scanner.nextLine(); // limpia el salto pendiente y espera al ENTER
-            } else if (suma1 > 500) {
-                System.out.println("ERROR: La suma de los atributos no puede superar 500");
-                System.out.println("Pulsa ENTER para volver a intentarlo...");
-                scanner.nextLine();
-            } else {
+                criticoJ1 = rand.nextInt(101); // 0-100
+                regeneracionJ1 = rand.nextInt(21) + 5; // 5–25
+
+                System.out.println("Atributos aleatorios del Jugador 1:");
+                System.out.println("Velocidad: " + velocidadJ1);
+                System.out.println("Ataque: " + ataqueJ1);
+                System.out.println("Defensa: " + defensaJ1);
+                System.out.println("Vida: " + vidaJ1);
+                System.out.println("Crítico: " + criticoJ1);
+                System.out.println("Regeneración: " + regeneracionJ1);
+
                 valido1 = true;
+            } else {
+                // --- código original del jugador 1 ---
+                System.out.println("Introduce los datos del Jugador1 (1-200)");
+                System.out.println("Introduce la velocidad: ");
+                velocidadJ1 = scanner.nextInt();
+                System.out.println("Introduce el ataque: ");
+                ataqueJ1 = scanner.nextInt();
+                System.out.println("Introduce la defensa: ");
+                defensaJ1 = scanner.nextInt();
+                System.out.println("Introduce la vida: ");
+                vidaJ1 = scanner.nextInt();
+                System.out.print("Crítico (0-100): ");
+                criticoJ1 = scanner.nextInt();
+                System.out.print("Regeneración: ");
+                regeneracionJ1 = scanner.nextInt();
+
+                suma1 = velocidadJ1 + ataqueJ1 + defensaJ1 + vidaJ1;
+
+                if (velocidadJ1 < 1 || ataqueJ1 < 1 || defensaJ1 < 1 || vidaJ1 < 1
+                        || velocidadJ1 > 200 || ataqueJ1 > 200 || defensaJ1 > 200 || vidaJ1 > 200){
+                    System.out.println("ERROR: Los atributos tienen que estar entre 1-200");
+                    System.out.println("Pulsa ENTER para volver a intentarlo...");
+                    scanner.nextLine(); // limpia el salto pendiente y espera al ENTER
+                } else if (suma1 > 500) {
+                    System.out.println("ERROR: La suma de los atributos no puede superar 500");
+                    System.out.println("Pulsa ENTER para volver a intentarlo...");
+                    scanner.nextLine();
+                } else {
+                    valido1 = true;
+                }
             }
         }
+
 
         //---JUGADOR 2---
+        //---JUGADOR 2---
         while (!valido2){
-            System.out.println("Introduce los datos del Jugador2 (1-200)");
-            System.out.println("Introduce la velocidad: ");
-            velocidadJ2 = scanner.nextInt();
-            System.out.println("Introduce el ataque: ");
-            ataqueJ2 = scanner.nextInt();
-            System.out.println("Introduce la defensa: ");
-            defensaJ2 = scanner.nextInt();
-            System.out.println("Introduce la vida: ");
-            vidaJ2 = scanner.nextInt();
-            System.out.print("Crítico (0-100): ");
-            criticoJ2 = scanner.nextInt();
-            System.out.print("Regeneración: ");
-            regeneracionJ2 = scanner.nextInt();
+            System.out.println("¿Quieres introducir los atributos del Jugador 2 manualmente (1) o generarlos aleatoriamente (0)?");
+            int opcion = scanner.nextInt();
 
-            suma2 = velocidadJ2 + ataqueJ2 + defensaJ2 + vidaJ2;
+            if (opcion == 0) {
+                // Generar aleatoriamente
+                do {
+                    velocidadJ2 = rand.nextInt(200) + 1;
+                    ataqueJ2 = rand.nextInt(200) + 1;
+                    defensaJ2 = rand.nextInt(200) + 1;
+                    vidaJ2 = rand.nextInt(200) + 1;
+                    suma2 = velocidadJ2 + ataqueJ2 + defensaJ2 + vidaJ2;
+                } while (suma2 > 500);
 
-            //Validaciones
-            if (velocidadJ2 < 1 || ataqueJ2 < 1 || defensaJ2 < 1 || vidaJ2 < 1
-                    || velocidadJ2 > 200 || ataqueJ2 > 200 || defensaJ2 > 200 || vidaJ2 > 200){
-                System.out.println("ERROR: Los atributos tienen que estar entre 1-200");
-                System.out.println("Pulsa ENTER para volver a intentarlo...");
-                scanner.nextLine();
-            } else if (suma2 > 500) {
-                System.out.println("ERROR: La suma de los atributos no puede superar 500");
-                System.out.println("Pulsa ENTER para volver a intentarlo...");//limpia el salto pendiente y espera al ENTER
-                scanner.nextLine();
-            } else {
+                criticoJ2 = rand.nextInt(101);
+                regeneracionJ2 = rand.nextInt(21) + 5;
+
+                System.out.println("Atributos aleatorios del Jugador 2:");
+                System.out.println("Velocidad: " + velocidadJ2);
+                System.out.println("Ataque: " + ataqueJ2);
+                System.out.println("Defensa: " + defensaJ2);
+                System.out.println("Vida: " + vidaJ2);
+                System.out.println("Crítico: " + criticoJ2);
+                System.out.println("Regeneración: " + regeneracionJ2);
+
                 valido2 = true;
+            } else {
+                // --- código original del jugador 2 ---
+                System.out.println("Introduce los datos del Jugador2 (1-200)");
+                System.out.println("Introduce la velocidad: ");
+                velocidadJ2 = scanner.nextInt();
+                System.out.println("Introduce el ataque: ");
+                ataqueJ2 = scanner.nextInt();
+                System.out.println("Introduce la defensa: ");
+                defensaJ2 = scanner.nextInt();
+                System.out.println("Introduce la vida: ");
+                vidaJ2 = scanner.nextInt();
+                System.out.print("Crítico (0-100): ");
+                criticoJ2 = scanner.nextInt();
+                System.out.print("Regeneración: ");
+                regeneracionJ2 = scanner.nextInt();
+
+                suma2 = velocidadJ2 + ataqueJ2 + defensaJ2 + vidaJ2;
+
+                if (velocidadJ2 < 1 || ataqueJ2 < 1 || defensaJ2 < 1 || vidaJ2 < 1
+                        || velocidadJ2 > 200 || ataqueJ2 > 200 || defensaJ2 > 200 || vidaJ2 > 200){
+                    System.out.println("ERROR: Los atributos tienen que estar entre 1-200");
+                    System.out.println("Pulsa ENTER para volver a intentarlo...");
+                    scanner.nextLine();
+                } else if (suma2 > 500) {
+                    System.out.println("ERROR: La suma de los atributos no puede superar 500");
+                    System.out.println("Pulsa ENTER para volver a intentarlo...");
+                    scanner.nextLine();
+                } else {
+                    valido2 = true;
+                }
             }
         }
+
 
         //---COMBATE---
         System.out.println("¡COMIENZA EL COMBATE!");
@@ -186,17 +245,19 @@ public class EjercicioCombate {
             System.out.print("Jugador1: [");
             int barra1 = (int) ((vidaJ1 * 20.0) / vidaMax1);
             for (int i = 0; i < 20; i++) {
-                if (i < barra1) System.out.print("-");
+                if (i < barra1) System.out.print("★");
                 else System.out.print(" ");
             }
             System.out.println("] " + vidaJ1 + "/" + vidaMax1 + " PV");
 
+            System.out.print("Jugador2: [");
             int barra2 = (int) ((vidaJ2 * 20.0) / vidaMax2);
             for (int i = 0; i < 20; i++) {
-                if (i < barra2) System.out.print("-");
+                if (i < barra2) System.out.print("★");
                 else System.out.print(" ");
             }
             System.out.println("] " + vidaJ2 + "/" + vidaMax2 + " PV");
+
 
             turno++;
         }
