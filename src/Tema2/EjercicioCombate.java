@@ -8,16 +8,20 @@ public class EjercicioCombate {
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
 
-        int velocidadJ1 = 0,ataqueJ1 = 0,defensaJ1 = 0,vidaJ1 = 0,criticoJ1=0,regeneracionJ1 = 0;
-        int velocidadJ2 = 0,ataqueJ2 = 0,defensaJ2 = 0,vidaJ2 = 0,criticoJ2=0,regeneracionJ2 = 0;
+        int velocidadJ1 = 0, ataqueJ1 = 0, defensaJ1 = 0, vidaJ1 = 0, criticoJ1 = 0, regeneracionJ1 = 0;
+        int velocidadJ2 = 0, ataqueJ2 = 0, defensaJ2 = 0, vidaJ2 = 0, criticoJ2 = 0, regeneracionJ2 = 0;
         int suma1, suma2;
         boolean valido1 = false, valido2 = false;
+        double factorAtaque, factorDefensa;
+        int daño1, daño2;
+        int turno = 1;
+        int vidaMax1, vidaMax2;
+        int accionJ1, accionJ2;
 
         System.out.println("----->EMPIEZA EL COMBATE<-----");
 
         //---JUGADOR 1---
-        //---JUGADOR 1---
-        while (!valido1){
+        while (!valido1) {
             System.out.println("¿Quieres introducir los atributos del Jugador 1 manualmente (1) o generarlos aleatoriamente (0)?");
             int opcion = scanner.nextInt();
 
@@ -44,15 +48,15 @@ public class EjercicioCombate {
 
                 valido1 = true;
             } else {
-                // --- código original del jugador 1 ---
+                // Introducir manualmente
                 System.out.println("Introduce los datos del Jugador1 (1-200)");
-                System.out.println("Introduce la velocidad: ");
+                System.out.print("Velocidad: ");
                 velocidadJ1 = scanner.nextInt();
-                System.out.println("Introduce el ataque: ");
+                System.out.print("Ataque: ");
                 ataqueJ1 = scanner.nextInt();
-                System.out.println("Introduce la defensa: ");
+                System.out.print("Defensa: ");
                 defensaJ1 = scanner.nextInt();
-                System.out.println("Introduce la vida: ");
+                System.out.print("Vida: ");
                 vidaJ1 = scanner.nextInt();
                 System.out.print("Crítico (0-100): ");
                 criticoJ1 = scanner.nextInt();
@@ -62,13 +66,11 @@ public class EjercicioCombate {
                 suma1 = velocidadJ1 + ataqueJ1 + defensaJ1 + vidaJ1;
 
                 if (velocidadJ1 < 1 || ataqueJ1 < 1 || defensaJ1 < 1 || vidaJ1 < 1
-                        || velocidadJ1 > 200 || ataqueJ1 > 200 || defensaJ1 > 200 || vidaJ1 > 200){
+                        || velocidadJ1 > 200 || ataqueJ1 > 200 || defensaJ1 > 200 || vidaJ1 > 200) {
                     System.out.println("ERROR: Los atributos tienen que estar entre 1-200");
-                    System.out.println("Pulsa ENTER para volver a intentarlo...");
-                    scanner.nextLine(); // limpia el salto pendiente y espera al ENTER
+                    scanner.nextLine();
                 } else if (suma1 > 500) {
                     System.out.println("ERROR: La suma de los atributos no puede superar 500");
-                    System.out.println("Pulsa ENTER para volver a intentarlo...");
                     scanner.nextLine();
                 } else {
                     valido1 = true;
@@ -76,10 +78,10 @@ public class EjercicioCombate {
             }
         }
 
+        vidaMax1 = vidaJ1;
 
         //---JUGADOR 2---
-        //---JUGADOR 2---
-        while (!valido2){
+        while (!valido2) {
             System.out.println("¿Quieres introducir los atributos del Jugador 2 manualmente (1) o generarlos aleatoriamente (0)?");
             int opcion = scanner.nextInt();
 
@@ -106,15 +108,15 @@ public class EjercicioCombate {
 
                 valido2 = true;
             } else {
-                // --- código original del jugador 2 ---
+                // Introducir manualmente
                 System.out.println("Introduce los datos del Jugador2 (1-200)");
-                System.out.println("Introduce la velocidad: ");
+                System.out.print("Velocidad: ");
                 velocidadJ2 = scanner.nextInt();
-                System.out.println("Introduce el ataque: ");
+                System.out.print("Ataque: ");
                 ataqueJ2 = scanner.nextInt();
-                System.out.println("Introduce la defensa: ");
+                System.out.print("Defensa: ");
                 defensaJ2 = scanner.nextInt();
-                System.out.println("Introduce la vida: ");
+                System.out.print("Vida: ");
                 vidaJ2 = scanner.nextInt();
                 System.out.print("Crítico (0-100): ");
                 criticoJ2 = scanner.nextInt();
@@ -124,13 +126,11 @@ public class EjercicioCombate {
                 suma2 = velocidadJ2 + ataqueJ2 + defensaJ2 + vidaJ2;
 
                 if (velocidadJ2 < 1 || ataqueJ2 < 1 || defensaJ2 < 1 || vidaJ2 < 1
-                        || velocidadJ2 > 200 || ataqueJ2 > 200 || defensaJ2 > 200 || vidaJ2 > 200){
+                        || velocidadJ2 > 200 || ataqueJ2 > 200 || defensaJ2 > 200 || vidaJ2 > 200) {
                     System.out.println("ERROR: Los atributos tienen que estar entre 1-200");
-                    System.out.println("Pulsa ENTER para volver a intentarlo...");
                     scanner.nextLine();
                 } else if (suma2 > 500) {
                     System.out.println("ERROR: La suma de los atributos no puede superar 500");
-                    System.out.println("Pulsa ENTER para volver a intentarlo...");
                     scanner.nextLine();
                 } else {
                     valido2 = true;
@@ -138,28 +138,35 @@ public class EjercicioCombate {
             }
         }
 
+        vidaMax2 = vidaJ2;
 
         //---COMBATE---
         System.out.println("¡COMIENZA EL COMBATE!");
-        int turno = 1;
 
-        int vidaMax1 = vidaJ1;
-        int vidaMax2 = vidaJ2;
-
-        while (vidaJ1 > 0 && vidaJ2 > 0){
+        while (vidaJ1 > 0 && vidaJ2 > 0) {
             System.out.println("\n--- Turno " + turno + " ---");
 
-            int accionJ1,accionJ2;
+            // Validar acción Jugador 1
+            accionJ1 = 0;
+            while (accionJ1 != 1 && accionJ1 != 2) {
+                System.out.println("Jugador 1: Elige acción (1=Atacar, 2=Curarse)");
+                accionJ1 = scanner.nextInt();
+                if (accionJ1 != 1 && accionJ1 != 2) {
+                    System.out.println("ERROR: Tienes que introducir 1 o 2");
+                }
+            }
 
-            System.out.println("Jugador 1: Elige acción (1=Atacar, 2=Curarse)");
-            accionJ1 = scanner.nextInt();
-            System.out.println("Jugador 2: Elige acción (1=Atacar, 2=Curarse)");
-            accionJ2 = scanner.nextInt();
+            // Validar acción Jugador 2
+            accionJ2 = 0;
+            while (accionJ2 != 1 && accionJ2 != 2) {
+                System.out.println("Jugador 2: Elige acción (1=Atacar, 2=Curarse)");
+                accionJ2 = scanner.nextInt();
+                if (accionJ2 != 1 && accionJ2 != 2) {
+                    System.out.println("ERROR: Tienes que introducir 1 o 2");
+                }
+            }
 
             //Decidir quien ataca primero por el que tenga mayor velocidad
-            double factorAtaque,factorDefensa;
-            int daño1,daño2;
-
             if (velocidadJ1 >= velocidadJ2) {
                 // Jugador 1 primero
                 if (accionJ1 == 2) {
@@ -180,6 +187,7 @@ public class EjercicioCombate {
                     System.out.println("Jugador 1 ataca e inflinge " + daño1 + " de daño.");
                 }
 
+                // Jugador 2 actúa si sigue vivo
                 if (vidaJ2 > 0) {
                     if (accionJ2 == 2) {
                         vidaJ2 += regeneracionJ2;
@@ -220,6 +228,7 @@ public class EjercicioCombate {
                     System.out.println("Jugador 2 ataca e inflinge " + daño2 + " de daño.");
                 }
 
+                // Jugador 1 actúa si sigue vivo
                 if (vidaJ1 > 0) {
                     if (accionJ1 == 2) {
                         vidaJ1 += regeneracionJ1;
@@ -257,7 +266,6 @@ public class EjercicioCombate {
                 else System.out.print(" ");
             }
             System.out.println("] " + vidaJ2 + "/" + vidaMax2 + " PV");
-
 
             turno++;
         }
