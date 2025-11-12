@@ -11,7 +11,7 @@ public class Ejercicio5 {
         }
     }
 
-    public static void tablaMenu() {
+    public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         int num = 0;
 
@@ -24,10 +24,5 @@ public class Ejercicio5 {
             }
         }
 
-        mostrarTabla(num);
-    }
-
-    public static void main(String[] args){
-        tablaMenu();
-    }
+        mostrarTabla(num);    }
 }

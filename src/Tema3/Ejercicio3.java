@@ -16,7 +16,8 @@ public class Ejercicio3 {
         return 2 * 3.14 * radius;
     }
 
-    public static void circleMenu() {
+
+    public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Introduce un radio válido (Mayor a 0): ");
@@ -32,10 +33,5 @@ public class Ejercicio3 {
             System.out.println("RADIO: " + radius);
             System.out.println("PERIMETRO: " + perimeter);
             System.out.println("AREA: " + area);
-        }
-    }
-
-    public static void main(String[] args){
-        circleMenu();
-    }
+        }    }
 }

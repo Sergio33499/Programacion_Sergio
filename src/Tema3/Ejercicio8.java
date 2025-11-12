@@ -32,7 +32,9 @@ public class Ejercicio8 {
         return dia >= 1 && dia <= diasMax;
     }
 
-    public static void comprobarFecha(){
+
+    public static void main(String[]args){
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Dime un dia:");
@@ -51,11 +53,5 @@ public class Ejercicio8 {
         }else{
             System.out.println("La fecha no es valida");
         }
-    }
-
-    public static void main(String[]args){
-
-        comprobarFecha();
-
     }
 }

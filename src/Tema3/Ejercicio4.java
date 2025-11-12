@@ -21,7 +21,8 @@ public class Ejercicio4 {
         return dollar / tasaCambio;
     }
 
-    public static void currencyMenu() {
+    public static void main(String[] args){
+
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
         double cantidad;
@@ -47,9 +48,5 @@ public class Ejercicio4 {
 
             System.out.println();
         }
-    }
-    public static void main(String[] args){
-
-        currencyMenu();
     }
 }

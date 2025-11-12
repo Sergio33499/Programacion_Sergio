@@ -10,12 +10,9 @@ public class Ejercicio6 {
         System.out.println();
     }
 
-    public static void tablasDel1Al10() {
+    public static void main(String[] args){
         for (int num = 1; num <= 10; num++) {
             mostrarTabla(num);
         }
-    }
-    public static void main(String[] args){
-        tablasDel1Al10();
     }
 }

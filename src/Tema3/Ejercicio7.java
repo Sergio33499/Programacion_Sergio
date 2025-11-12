@@ -16,7 +16,9 @@ public class Ejercicio7 {
         return true;
     }
 
-    public static void comprobarPrimos(){
+
+    public static void main(String[] args){
+
         Scanner scanner = new Scanner(System.in);
         int num = -1;
 
@@ -36,11 +38,5 @@ public class Ejercicio7 {
                 }
             }
         }
-        System.out.println("Programa terminado");
-    }
-
-    public static void main(String[] args){
-
-        comprobarPrimos();
-    }
+        System.out.println("Programa terminado");    }
 }
