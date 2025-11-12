@@ -6,7 +6,7 @@ public class Ejercicio23 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int suma = 0;
+        double suma = 0;
         int contador = 0;
         int num;
 
@@ -18,7 +18,7 @@ public class Ejercicio23 {
         }
 
         if (contador > 0) {
-            double media = (double) suma / contador;
+            double media = suma / contador;
             System.out.println("La media de los numeros positivos es: " + media);
         } else {
             System.out.println("No se introdujeron numeros positivos");

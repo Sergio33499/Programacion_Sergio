@@ -4,17 +4,12 @@ import java.util.Scanner;
 
 public class Ejercicio15 {
     public static void main(String[] args){
-
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Introduce el numero del mes del 1-12");
         int mes = scanner.nextInt();
-
         System.out.println("Introduce el numero del año");
         int anio = scanner.nextInt();
-
         int dias = 0;
-
         if (mes < 1 || mes > 12){
             System.out.println("Mes no valido");
         }else {

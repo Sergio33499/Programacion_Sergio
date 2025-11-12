@@ -11,12 +11,14 @@ public class Ejercicio7 {
 
         int num1 = scanner.nextInt();
         int num2 = scanner.nextInt();
+        int resta;
+        int resta2;
 
         if (num1 > num2){
-            int resta = num1 - num2;
+            resta = num1 - num2;
             System.out.println("El resultado de restar el mas grande al mas pequeño es: " + resta);
         }else{
-            int resta2 = num2 - num1;
+            resta2 = num2 - num1;
             System.out.println("El resultado de restar el mas grande al mas pequeño es: " + resta2);
         }
 

@@ -33,5 +33,6 @@ public class Ejercicio3 {
             System.out.println("RADIO: " + radius);
             System.out.println("PERIMETRO: " + perimeter);
             System.out.println("AREA: " + area);
-        }    }
+        }
+    }
 }

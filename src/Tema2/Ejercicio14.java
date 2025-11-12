@@ -14,7 +14,6 @@ public class Ejercicio14 {
         int dia = scanner.nextInt();
 
         int tarifaEstandar = 15;
-
         if (persona >= 5 && dia >= 7){
             int precioDescuento = (tarifaEstandar * persona) * 100 / 25;
             System.out.println("El precio de la reserva será: " + precioDescuento);

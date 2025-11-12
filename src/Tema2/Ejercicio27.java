@@ -5,10 +5,8 @@ public class Ejercicio27 {
 
       int contador =  0;
       int num = 2;
-
       while (contador < 20){
          boolean esPrimo = true;
-
           for (int i = 2; i <= Math.sqrt(num); i++) {
               if (num % i == 0){
                   esPrimo = false;

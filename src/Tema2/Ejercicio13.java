@@ -20,23 +20,17 @@ public class Ejercicio13 {
             System.out.println("Datos incorrectos. Programa terminado.");
             return;
         }
-
         segundo++;
-
         if (segundo == 60){
             segundo = 0;
             minuto++;
         }
-
         if (minuto == 60){
             minuto = 0;
             hora = 0;
         }
-
         if (hora == 24){
             hora = 0;
-        }
-
-        System.out.printf("La hora con un segundo más es: %02d:%02d:%02d\n", hora, minuto, segundo);
+        }System.out.printf("La hora con un segundo más es: %02d:%02d:%02d\n", hora, minuto, segundo);
     }
 }
