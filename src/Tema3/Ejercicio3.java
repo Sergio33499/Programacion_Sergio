@@ -9,24 +9,22 @@ public class Ejercicio3 {
     }
 
     public static double calculateCircleArea(double radius){
-        return 3.14f * radius * radius;
+        return 3.14 * radius * radius;
     }
 
     public static double calculateCirclePerimeter(double radius){
-       return 2 * 3.14f * radius;
+        return 2 * 3.14 * radius;
     }
 
-    public static void main(String[]args){
+    public static void circleMenu() {
         Scanner scanner = new Scanner(System.in);
 
-        double radius;
-
         System.out.println("Introduce un radio válido (Mayor a 0): ");
-        radius = scanner.nextDouble();
+        double radius = scanner.nextDouble();
 
-        if (!validRadius(radius)){
+        if (!validRadius(radius)) {
             System.out.println("ERROR: El radio introducido no es válido.");
-        }else{
+        } else {
             double perimeter = calculateCirclePerimeter(radius);
             double area = calculateCircleArea(radius);
 
@@ -35,6 +33,9 @@ public class Ejercicio3 {
             System.out.println("PERIMETRO: " + perimeter);
             System.out.println("AREA: " + area);
         }
+    }
 
+    public static void main(String[] args){
+        circleMenu();
     }
 }

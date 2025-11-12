@@ -15,7 +15,7 @@ public class Ejercicio1 {
         }
     }
 
-    public static void main(String[]args){
+    public static void comprobarNum(){
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Dime un numero entero: ");
@@ -30,6 +30,10 @@ public class Ejercicio1 {
         }else {
             System.out.println(result);
         }
+    }
 
+    public static void main(String[]args){
+
+        comprobarNum();
     }
 }
