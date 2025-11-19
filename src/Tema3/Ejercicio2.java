@@ -2,6 +2,8 @@ package Tema3;
 
 import java.util.Scanner;
 
+import static Tema3.Ejercicio1.numberSign;
+
 public class Ejercicio2 {
 
     public static boolean isAdult(int edad){
@@ -14,8 +16,8 @@ public class Ejercicio2 {
     public static void main(String[]args){
         Scanner scanner = new Scanner(System.in);
 
-        Ejercicio1.numberSign(1);
-        Ejercicio1.main(args);
+        numberSign(1);
+        //Ejercicio1.main(args);
 
 
         System.out.println("Dime tu edad: ");

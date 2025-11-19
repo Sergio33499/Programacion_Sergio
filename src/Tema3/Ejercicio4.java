@@ -24,14 +24,13 @@ public class Ejercicio4 {
     public static void main(String[] args){
 
         Scanner scanner = new Scanner(System.in);
-        int opcion = 0;
+        int opcion;
         double cantidad;
+        showMenu();
+        System.out.print("Selecciona una opción: ");
+        opcion = scanner.nextInt();
 
         while (opcion != 3) {
-            showMenu();
-            System.out.print("Selecciona una opción: ");
-            opcion = scanner.nextInt();
-
             if (opcion == 1){
                 System.out.print("Introduce la cantidad en euros: ");
                 cantidad = scanner.nextDouble();
@@ -47,6 +46,9 @@ public class Ejercicio4 {
             }
 
             System.out.println();
+            showMenu();
+            System.out.print("Selecciona una opción: ");
+            opcion = scanner.nextInt();
         }
     }
 }

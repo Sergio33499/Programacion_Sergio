@@ -13,15 +13,15 @@ public class Ejercicio5 {
 
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
-        int num = 0;
+        int num;
+        System.out.print("Introduce un número del 1-10: ");
+        num = scanner.nextInt();
 
         while (num < 1 || num > 10) {
+                System.out.println("Número inválido. Intenta de nuevo.");
+
             System.out.print("Introduce un número del 1-10: ");
             num = scanner.nextInt();
-
-            if (num < 1 || num > 10) {
-                System.out.println("Número inválido. Intenta de nuevo.");
-            }
         }
 
         mostrarTabla(num);    }
