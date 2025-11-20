@@ -114,6 +114,18 @@ public class MyMath {
         }
     }
 
+    public static int numeroDeSoluciones(double a, double b, double c){
+        double num = b * b - 4 * a *c;
+
+        if (num > 0){
+            return 2;
+        } else if (num == 0) {
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
     public static void main(String[] args){
 
 
