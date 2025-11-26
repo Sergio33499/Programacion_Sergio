@@ -126,6 +126,19 @@ public class MyMath {
         }
     }
 
+    public static int sumarDigitosEntero (int num){
+        int suma = 0;
+        num = Math.abs(num);
+        while (num != 0){
+            int digitos = num % 10;
+            num /= 10;
+            suma += digitos;
+        }
+        return suma;
+    }
+
+
+
     public static void main(String[] args){
 
 
