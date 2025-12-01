@@ -225,7 +225,13 @@ public class myArray {
                         System.out.println("El array no es capicua");
                     }
                     break;
-
+                case 'l':
+                    salir = true;
+                    System.out.println("¡Hasta luego!");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intenta de nuevo.");
+                    break;
             }
         }
     }
