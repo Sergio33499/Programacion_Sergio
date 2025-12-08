@@ -103,5 +103,38 @@ public class BuscarParejas {
 
     public static void main(String[]args){
 
+        scanner = new Scanner(System.in);
+        tablero = generarParejas();
+        mezclarArray(tablero);
+        estadoVisible = inicializarEstado(tablero.length);
+
+        System.out.println("¡Bienvenido a Buscar Parejas!");
+
+        while (!comprobarVictoria()) {
+            mostrarTablero(tablero, estadoVisible);
+
+            int pos1 = obtenerPosicionValida("Selecciona la primera posición (1-20): ");
+            estadoVisible[pos1] = true; // Se muestra temporalmente
+            mostrarTablero(tablero, estadoVisible);
+
+            int pos2 = obtenerPosicionValida("Selecciona la segunda posición (1-20): ");
+            estadoVisible[pos2] = true; // Se muestra temporalmente
+            mostrarTablero(tablero, estadoVisible);
+
+            if (tablero[pos1].equals(tablero[pos2])) {
+                System.out.println("¡Pareja encontrada: " + tablero[pos1] + "!");
+            } else {
+                System.out.println("No coinciden. Presiona Enter para continuar...");
+                scanner.nextLine(); // Pausa para que el usuario vea qué cartas eran
+
+                estadoVisible[pos1] = false;
+                estadoVisible[pos2] = false;
+                limpiarPantalla();
+            }
+        }
+
+        mostrarTablero(tablero, estadoVisible);
+        System.out.println("¡Felicidades! Has encontrado todas las parejas.");
+        scanner.close();
     }
 }
