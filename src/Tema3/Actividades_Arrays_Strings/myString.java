@@ -133,39 +133,39 @@ public class myString {
         System.out.println("--- Apartado A: Invertir y Mayúsculas ---");
         System.out.print("Introduce una cadena: ");
         String cadenaA = sc.nextLine();
-        System.out.println("Resultado: " + myString.invertirArray(cadenaA)); // Usamos el nombre correcto
+        System.out.println("Resultado: " + myString.invertirArray(cadenaA));
 
         System.out.println("\n--- Apartado B: Contar vocales ---");
         System.out.print("Introduce una cadena: ");
         String cadenaB = sc.nextLine();
-        System.out.println("Número de vocales: " + myString.devolverNumVocales(cadenaB)); // [cite: 14]
+        System.out.println("Número de vocales: " + myString.devolverNumVocales(cadenaB));
 
         System.out.println("\n--- Apartado C: Palabra más larga ---");
         System.out.print("Introduce una frase: ");
         String fraseC = sc.nextLine();
-        System.out.println("La palabra más larga es: " + myString.devolverPalabraMasLarga(fraseC)); // [cite: 15]
+        System.out.println("La palabra más larga es: " + myString.devolverPalabraMasLarga(fraseC));
 
         System.out.println("\n--- Apartado D: Frecuencia de subcadena ---");
         System.out.print("Principal: ");
         String principal = sc.nextLine();
         System.out.print("Subcadena: ");
         String sub = sc.nextLine();
-        System.out.println("Frecuencia: " + myString.contarSubCadena(principal, sub)); // [cite: 16]
+        System.out.println("Frecuencia: " + myString.contarSubCadena(principal, sub));
 
         System.out.println("\n--- Apartado E: Número de palabras ---");
         System.out.print("Introduce una frase: ");
         String fraseE = sc.nextLine();
-        System.out.println("Contiene: " + myString.contarPalabras(fraseE) + " palabras."); // [cite: 17]
+        System.out.println("Contiene: " + myString.contarPalabras(fraseE) + " palabras.");
 
         System.out.println("\n--- Apartado F: Formato teléfono ---");
         System.out.print("Introduce 11 dígitos: ");
         String tlf = sc.nextLine();
-        System.out.println("Formato: " + myString.devolverNumTelefono(tlf)); // Usamos el nombre correcto
+        System.out.println("Formato: " + myString.devolverNumTelefono(tlf));
 
         System.out.println("\n--- Apartado G: Histograma de vocales ---");
         System.out.print("Introduce una cadena: ");
         String cadenaG = sc.nextLine();
-        myString.mostrarHistogramaVocales(cadenaG); // [cite: 19]
+        myString.mostrarHistogramaVocales(cadenaG);
 
         sc.close();
     }
