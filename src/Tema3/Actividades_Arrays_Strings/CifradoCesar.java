@@ -3,8 +3,6 @@ package Tema3.Actividades_Arrays_Strings;
 import java.util.Scanner;
 
 public class CifradoCesar {
-    //char letraOriginal = 'B';
-    //char letraCifrada = (char) (letraOriginal + 1); // Esto te daría 'C'
 
     public static String encriptar (String cadena){
         String palabra = cadena.toUpperCase();
