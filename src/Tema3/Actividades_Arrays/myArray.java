@@ -126,7 +126,7 @@ public class myArray {
             System.out.print("Elemento " + (i + 1) + ": ");
             array[i] = sc.nextInt();
         }
-        sc.nextLine();  // Limpiar buffer
+        sc.nextLine();
         return array;
     }
 
