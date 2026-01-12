@@ -67,9 +67,12 @@ public class Persona {
     }
 
     public int ageDifference(Persona persona, int edad) {
+
         return persona.edad - edad;
     }
 
-    //public static boolean checkDNI(boolean esCorrecto, String dni){}
+   // public static boolean checkDNI(boolean esCorrecto, String dni){
+
+    //}
 
 }
