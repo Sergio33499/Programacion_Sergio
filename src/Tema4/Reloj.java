@@ -1,9 +1,9 @@
 package Tema4;
 
 public class Reloj {
-    int hora;
-    int minuto;
-    int segundo;
+    private int hora;
+    private int minuto;
+    private int segundo;
 
     public Reloj(){
         hora = 0;
