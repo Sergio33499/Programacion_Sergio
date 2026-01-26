@@ -7,8 +7,8 @@ public class Persona {
     private String nombre;
     private String apellidos;
     private int edad;
-    static final int adultAge = 18;
-    static final int retiredAge = 65;
+    static final int ADULT_AGE = 18;
+    static final int RETIRED_AGE = 65;
 
     public Persona(String dni, String nombre, String apellidos, int edad) {
         this.dni = dni;
@@ -51,11 +51,11 @@ public class Persona {
     }
 
     public boolean isAdult() {
-        return edad >= adultAge;
+        return edad >= ADULT_AGE;
     }
 
     public boolean isRetired() {
-        return edad >= retiredAge;
+        return edad >= RETIRED_AGE;
     }
 
     public int ageDifference(Persona persona) {

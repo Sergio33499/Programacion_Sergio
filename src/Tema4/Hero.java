@@ -18,6 +18,9 @@ public class Hero {
     private int attack;
     private int defense;
 
+
+    //constbuit
+
     public Hero(String name, int level, int maxHealth, int attack, int defense){
         this.name = name;
         this.level = level;
