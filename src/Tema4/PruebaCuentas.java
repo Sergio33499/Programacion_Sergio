@@ -99,14 +99,15 @@ public class PruebaCuentas {
         String dni = scanner.nextLine();
         Persona2 p = buscarPersona(dni);
 
-        if (p != null) {
-            System.out.println("DNI: " + p.dni);
-            for (int i = 0; i < p.misCuentas.length; i++) {
-                if (p.misCuentas[i] != null) {
-                    System.out.println("Cuenta: " + p.misCuentas[i].numCuenta + " Saldo: " + p.misCuentas[i].consultarSaldo() + "€");
+            if (p != null) {
+                System.out.println(p);
+                System.out.println("DNI: " + p.dni);
+                for (int i = 0; i < p.misCuentas.length; i++) {
+                    if (p.misCuentas[i] != null) {
+                        System.out.println("Cuenta: " + p.misCuentas[i].numCuenta + " Saldo: " + p.misCuentas[i].consultarSaldo() + "€");
+                    }
                 }
             }
-        }
     }
 
     public static void recibirNomina() {
@@ -195,6 +196,7 @@ public class PruebaCuentas {
         for (int i = 0; i < contadorPersonas; i++) {
             if (personas[i].esMoroso()){
                 System.out.println("Moroso DNI: " + personas[i].dni);
+                System.out.println(personas[i]);
             }
         }
     }

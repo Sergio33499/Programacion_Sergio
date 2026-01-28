@@ -5,6 +5,11 @@ public class Cuenta {
     String numCuenta;
     double saldoDisp;
 
+    public Cuenta(){
+        this.numCuenta = " ";
+        this.saldoDisp = 42;
+    }
+
     public Cuenta(String numCuenta,double saldoDisp){
         this.numCuenta = numCuenta;
         this.saldoDisp = saldoDisp;
@@ -19,7 +24,7 @@ public class Cuenta {
     }
 
     public void pagar(double cantidadAPagar){
-        saldoDisp -= cantidadAPagar;
+        this.saldoDisp -= cantidadAPagar;
     }
 
 }
