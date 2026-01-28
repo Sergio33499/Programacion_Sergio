@@ -103,7 +103,7 @@ public class PruebaCuentas {
             System.out.println("DNI: " + p.dni);
             for (int i = 0; i < p.misCuentas.length; i++) {
                 if (p.misCuentas[i] != null) {
-                    System.out.println("Cuenta: " + p.misCuentas[i].numCuenta + " Saldo: " + p.misCuentas[i].consultarSaldo());
+                    System.out.println("Cuenta: " + p.misCuentas[i].numCuenta + " Saldo: " + p.misCuentas[i].consultarSaldo() + "€");
                 }
             }
         }
@@ -171,8 +171,16 @@ public class PruebaCuentas {
             scanner.nextLine();
 
             Cuenta origen = null, destino = null;
-            for (Cuenta c : emisor.misCuentas) if (c != null && c.numCuenta.equals(c1)) origen = c;
-            for (Cuenta c : receptor.misCuentas) if (c != null && c.numCuenta.equals(c2)) destino = c;
+            for (Cuenta c : emisor.misCuentas){
+                if (c != null && c.numCuenta.equals(c1)){
+                    origen = c;
+                }
+            }
+            for (Cuenta c : receptor.misCuentas){
+                if (c != null && c.numCuenta.equals(c2)){
+                    destino = c;
+                }
+            }
 
             if (origen != null && destino != null) {
                 origen.pagar(cant);
