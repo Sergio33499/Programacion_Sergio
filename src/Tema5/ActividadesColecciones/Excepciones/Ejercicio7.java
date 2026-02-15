@@ -63,10 +63,7 @@ public class Ejercicio7 {
             }catch (Exception e){
                 System.out.println("Error: " + e.getMessage());
                 e.printStackTrace();
-
-                if (scanner.hasNextLine()){
-                    scanner.nextLine();
-                }
+                scanner.nextLine();
             }
         }
         System.out.println("\n---- Gatos introducidos ----");
