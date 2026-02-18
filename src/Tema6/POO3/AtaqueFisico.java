@@ -1,0 +1,19 @@
+package Tema6.POO3;
+
+public class AtaqueFisico implements Ataque{
+
+    @Override
+    public void lanzar(){
+        System.out.println("El ataque ha sido lanzdo con exito!");
+    }
+
+    @Override
+    public int coste(){
+        return 10;
+    }
+
+    @Override
+    public int danoInflingido(){
+        return 20;
+    }
+}
