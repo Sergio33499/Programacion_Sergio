@@ -40,19 +40,3 @@ public class Ficha {
         }
     }
 }
-
-class Libro extends Ficha{
-    String autor;
-    String editorial;
-
-    public Libro(int numero, String titulo, String autor, String editorial){
-        super(numero, titulo);
-        this.autor = autor;
-        this.editorial = editorial;
-    }
-
-    public String toString(){
-        return "Libro: " + titulo + ", Autor: " + autor + ", Editorial" + editorial;
-    }
-
-}
