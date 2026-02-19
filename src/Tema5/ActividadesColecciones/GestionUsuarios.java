@@ -6,10 +6,8 @@ import java.util.Scanner;
 
 
 public class GestionUsuarios {
-    Map<String, Usuario> datosUsuario = new HashMap<>();
 
-
-    public void altaDeUsuario(String dni, String nombre, int edad) {
+    public static void altaDeUsuario(String dni, String nombre, int edad,Map<String, Usuario> datosUsuario) {
         if (datosUsuario.containsKey(dni)) {
             System.out.println("ERROR. El DNI ya existe!");
         } else {
@@ -20,7 +18,7 @@ public class GestionUsuarios {
         }
     }
 
-    public void bajaDeUsuario(String dni) {
+    public static void bajaDeUsuario(String dni,Map<String, Usuario> datosUsuario) {
         if (!datosUsuario.containsKey(dni)) {
             System.out.println("ERROR. No existe el dni!");
         } else {
@@ -29,16 +27,17 @@ public class GestionUsuarios {
         }
     }
 
-    public void mostrarDatos(String dni) {
+    public static void mostrarDatos(String dni, Map<String, Usuario> datosUsuario) {
         if (datosUsuario.containsKey(dni)) {
             Usuario u = datosUsuario.get(dni);
-            System.out.println("Nombre: " + u.nombre + " - Edad: " + u.edad + " - DNI: " + dni);
-        }else{
+            System.out.println(u + " | DNI: " + dni);
+
+        } else {
             System.out.println("ERROR. El usuario con DNI " + dni + " no existe.");
         }
     }
 
-    public void modificarUsuario(String dni, String nuevoNombre, int nuevaEdad) {
+    public static void modificarUsuario(String dni, String nuevoNombre, int nuevaEdad,Map<String, Usuario> datosUsuario) {
         if (datosUsuario.containsKey(dni)) {
             Usuario u = datosUsuario.get(dni);
             u.nombre = nuevoNombre;
@@ -49,40 +48,11 @@ public class GestionUsuarios {
         }
     }
 
-    public class Usuario {
-        String nombre;
-        int edad;
-
-        public Usuario() {
-            this.nombre = "Paco";
-            this.edad = 51;
-        }
-
-        public Usuario(String nombre, int edad) {
-            this.nombre = nombre;
-            this.edad = edad;
-        }
-
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
-
-        public void setEdad(int edad) {
-            this.edad = edad;
-        }
-
-        public int getEdad() {
-            return edad;
-        }
-
-        public String getNombre() {
-            return nombre;
-        }
-    }
 
     public static void main(String[] args) {
-        GestionUsuarios gimnasio = new GestionUsuarios();
+        //GestionUsuarios gimnasio = new GestionUsuarios();
         Scanner scanner = new Scanner(System.in);
+        Map<String, Usuario> datosUsuario = new HashMap<>();
         int opcion = -1;
 
         while (opcion != 5){
@@ -99,15 +69,15 @@ public class GestionUsuarios {
                     String n = scanner.nextLine();
                     System.out.print("Edad: ");
                     int e = scanner.nextInt();
-                    gimnasio.altaDeUsuario(d, n, e);
+                    altaDeUsuario(d, n, e,datosUsuario);
                     break;
                 case 2:
                     System.out.print("DNI a borrar: ");
-                    gimnasio.bajaDeUsuario(scanner.nextLine());
+                    bajaDeUsuario(scanner.nextLine(),datosUsuario);
                     break;
                 case 3:
                     System.out.print("DNI a consultar: ");
-                    gimnasio.mostrarDatos(scanner.nextLine());
+                    mostrarDatos(scanner.nextLine(),datosUsuario);
                     break;
                 case 4:
                     System.out.print("DNI a modificar: ");
@@ -117,7 +87,7 @@ public class GestionUsuarios {
                     System.out.print("Nueva Edad: ");
                     int em = scanner.nextInt();
                     scanner.nextLine();
-                    gimnasio.modificarUsuario(dm, nm, em);
+                    modificarUsuario(dm, nm, em,datosUsuario);
                     break;
             }
         }

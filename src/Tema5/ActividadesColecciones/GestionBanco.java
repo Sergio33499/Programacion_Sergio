@@ -5,13 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GestionBanco {
-    List<Usuario> cola = new LinkedList<>();
 
-    public void anadirALaCola(Usuario u){
+    public void anadirALaCola(UsuarioBanco u,List<UsuarioBanco> cola){
         cola.add(u);
     }
 
-    public void quitarPrimeroDeLaCola(){
+    public void quitarPrimeroDeLaCola(List<UsuarioBanco> cola){
         if (cola.isEmpty()){
             System.out.println("No se puede quitar a alguien de la cola porque esta vacia");
         }else {
@@ -20,7 +19,7 @@ public class GestionBanco {
         }
     }
 
-    public void quitarDeCualquierPosicion(int posicion){
+    public void quitarDeCualquierPosicion(int posicion,List<UsuarioBanco> cola){
         if (posicion >= 0 && posicion < cola.size()){
             cola.remove(posicion);
         }else {
@@ -28,47 +27,11 @@ public class GestionBanco {
         }
     }
 
-    public class Usuario{
-        String nombre;
-        String dni;
-        int edad;
-
-        public Usuario(){
-            this.nombre = "Paco";
-            this.edad = 14;
-            this.dni = "12324415H";
-        }
-
-        public Usuario(String nombre,String dni,int edad){
-            this.nombre = nombre;
-            this.dni = dni;
-            this.edad = edad;
-        }
-
-        public void setNombre(String nombre){
-            this.nombre = nombre;
-        }
-        public void setEdad(int edad){
-            this.edad = edad;
-        }
-        public void setDni(String dni){
-            this.dni = dni;
-        }
-
-        public String getNombre(){
-            return nombre;
-        }
-        public String getDni(){
-            return dni;
-        }
-        public int getEdad(){
-            return edad;
-        }
-    }
-
     public static void main(String[] args) {
         GestionBanco banco = new GestionBanco();
         Scanner scanner = new Scanner(System.in);
+        List<UsuarioBanco> cola = new LinkedList<>();
+
         int opcion = -1;
 
         while (opcion != 0){
@@ -88,19 +51,20 @@ public class GestionBanco {
                     String dni = scanner.nextLine();
                     System.out.println("Introduce la edad: ");
                     int edad = scanner.nextInt();
-                    Usuario newUser = banco.new Usuario(nombre,dni,edad);
-                    banco.anadirALaCola(newUser);
+                    UsuarioBanco newUser = new UsuarioBanco(nombre,dni,edad);
+                    banco.anadirALaCola(newUser,cola);
                     System.out.println("Usuario añadido correctamente!");
                     break;
 
                 case 2:
-                    banco.quitarPrimeroDeLaCola();
+                    banco.quitarPrimeroDeLaCola(cola);
                     break;
 
                 case 3:
                     System.out.println("Introduce la posicion a eliminar:");
                     int pos = scanner.nextInt();
-                    banco.quitarDeCualquierPosicion(pos);
+                    scanner.nextLine();
+                    banco.quitarDeCualquierPosicion(pos,cola);
                     break;
             }
         }
