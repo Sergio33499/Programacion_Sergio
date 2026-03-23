@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Ejercicio1 {
     public static void main(String[] args) {
-        File archivo = new File("numeros.txt");
+        File archivo = new File("/home/serpuimar2/IdeaProjects/Programacion_Sergio/src/Documentos/numeros.txt");
 
         int maximo = Integer.MIN_VALUE;
         int minimo = Integer.MAX_VALUE;
