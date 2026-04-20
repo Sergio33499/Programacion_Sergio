@@ -16,7 +16,7 @@ public class Ejercicio3 {
             while ((linea = br.readLine()) != null){
                 linea = linea.trim();
                 if (!linea.isEmpty()){
-                    String[] array = linea.split("\\s+");
+                    String[] array = linea.split("\\s+"); // split para dividir cadenas de texto
                     totalPalabras += array.length;
                 }
             }

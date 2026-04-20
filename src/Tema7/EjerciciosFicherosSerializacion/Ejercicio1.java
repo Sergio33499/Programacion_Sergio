@@ -23,7 +23,7 @@ public class Ejercicio1 {
             throw new RuntimeException(e);
         }
 
-        System.out.println("Archivo guardado con éxito");
+        System.out.println("Archivo guardado con e xito");
 
 
     }

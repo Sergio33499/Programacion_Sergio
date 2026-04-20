@@ -17,7 +17,7 @@ public class Ejercicio6 {
             return;
         }
 
-        try (FileReader fr = new FileReader("C:\\Users\\sergi\\IdeaProjects\\Programacion_Sergio\\src\\Documentos\\pi-million.txt");
+        try (FileReader fr = new FileReader("/home/serpuimar2/IdeaProjects/Programacion_Sergio/src/Documentos/pi-million.txt");
              BufferedReader br = new BufferedReader(fr)) {
 
             StringBuilder ventana = new StringBuilder();

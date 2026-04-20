@@ -7,7 +7,6 @@ public class Ejercicio7 {
     public static void main(String[] args) {
         File archivo = new File("C:\\Users\\sergi\\IdeaProjects\\Programacion_Sergio\\src\\Documentos\\Libros\\quijote_cervantes.txt");
 
-        // Contadores básicos
         int totalLineas = 0;
         int totalPalabras = 0;
         int totalCaracteres = 0;

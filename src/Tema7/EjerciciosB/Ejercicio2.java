@@ -44,7 +44,10 @@ public class Ejercicio2 {
                     contadorNotas++;
                 }
 
-                double media = (contadorNotas > 0) ? suma / contadorNotas : 0;
+                double media = 0;
+                if (contadorNotas > 0) {
+                    media = suma / contadorNotas;
+                }
                 listaAlumnos.add(new Alumno(nombre, apellido, media));
             }
 

@@ -15,7 +15,7 @@ public class Ejercicio2 {
                 System.out.println(linea);
             }
         } catch (IOException e) {
-            System.out.println("Error: No se pudo encontrar o leer el archivo.");
+            System.out.println("Error: No se puede encontrar o leer el archivo.");
             e.printStackTrace();
         }
     }

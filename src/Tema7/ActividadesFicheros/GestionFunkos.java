@@ -88,7 +88,7 @@ public class GestionFunkos {
 
     public void mostrarMediaPrecio() {
         if (listaFunkos.isEmpty()) {
-            System.out.println("La media es 0€ (lista vacía).");
+            System.out.println("La media es 0€.");
             return;
         }
         double suma = 0;

@@ -11,15 +11,22 @@ public class Ejercicio5 {
                 System.out.println("Carpeta 'Diccionario' creada.");
             } else {
                 System.out.println("No se pudo crear la carpeta.");
-                return;
             }
         }
 
         File archivoDiccionario = new File("/home/serpuimar2/IdeaProjects/Programacion_Sergio/src/Documentos/diccionario.txt");
 
+        /*
+        for(char i='A';i<='Z';i++) {
+
+        }
+        [abcdefg...]
+
+         */
+
         try (Scanner lector = new Scanner(archivoDiccionario)) {
             while (lector.hasNextLine()) {
-                String palabra = lector.nextLine().trim();
+                String palabra = lector.nextLine().trim(); //trim es para limpiar espacios
 
                 if (!palabra.isEmpty()) {
                     char primeraLetra = Character.toUpperCase(palabra.charAt(0));

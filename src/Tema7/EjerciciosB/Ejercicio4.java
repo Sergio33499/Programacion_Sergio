@@ -8,15 +8,15 @@ public class Ejercicio4 {
         Scanner teclado = new Scanner(System.in);
         Random random = new Random();
 
-        List<String> nombres = cargarArchivo("usa_nombres.txt");
-        List<String> apellidos = cargarArchivo("usa_apellidos.txt");
+        List<String> nombres = cargarArchivo("/home/serpuimar2/IdeaProjects/Programacion_Sergio/src/Documentos/usa_nombres.txt");
+        List<String> apellidos = cargarArchivo("/home/serpuimar2/IdeaProjects/Programacion_Sergio/src/Documentos/usa_apellidos.txt");
 
         if (nombres.isEmpty() || apellidos.isEmpty()) {
             System.out.println("Error: No se pudieron cargar los archivos de base.");
             return;
         }
 
-        System.out.print("¿Cuántos nombres aleatorios deseas generar?: ");
+        System.out.print("Cuántos nombres aleatorios quieres generar?: ");
         int cantidad = teclado.nextInt();
         teclado.nextLine();
 
