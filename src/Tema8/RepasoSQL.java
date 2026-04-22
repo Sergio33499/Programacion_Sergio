@@ -111,6 +111,65 @@ public class RepasoSQL {
                 System.out.println("Primeros 5 estudiantes: " + apellido + ", " + nombre);
             }
 
+            //sentencia 11
+            String sentenciaSQL11 = "SELECT E.nombre FROM Estudiante E JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante JOIN Asignatura A ON EA.id_asignatura = A.id_asignatura WHERE A.nombre_asignatura = 'Vuelo' AND EA.calificacion >= 8";
+            PreparedStatement sentencia11 = con.prepareStatement(sentenciaSQL11);
+
+            ResultSet resultados11 = sentencia11.executeQuery();
+
+            while(resultados11.next()){
+                System.out.println("Estudiante sobresaliente en Vuelo: " + resultados11.getString("nombre"));
+            }
+
+            //sentencia 12
+            String sentenciaSQL12 = "INSERT INTO Estudiante (nombre, apellido, id_casa, anyo_curso, fecha_nacimiento) VALUES ('Nymphadora', 'Tonks', 4, 7, '1973-11-25')";
+            PreparedStatement sentencia12 = con.prepareStatement(sentenciaSQL12);
+
+            int filasAfectadas = sentencia12.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                System.out.println("¡Estudiante insertada correctamente!");
+            }
+
+            //sentencia 13
+            String sentenciaSQL13 = "UPDATE Casa SET id_jefe = 7 WHERE nombre_casa = 'Hufflepuff'";
+
+            PreparedStatement sentencia13 = con.prepareStatement(sentenciaSQL13);
+
+            int filasActualizadas = sentencia13.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                System.out.println("Jefe de casa actualizado correctamente");
+            }
+
+            //sentencia 14
+            String sentenciaSQL14 = "DELETE FROM Estudiante WHERE nombre = 'Tom Riddle'";
+
+            PreparedStatement sentencia14 = con.prepareStatement(sentenciaSQL14);
+
+            int filasBorradas = sentencia14.executeUpdate();
+
+            if (filasBorradas > 0) {
+                System.out.println("Registro eliminado con éxito.");
+            } else {
+                System.out.println("No se encontró ningún estudiante con ese nombre.");
+            }
+
+            //sentencia 15
+            String sentenciaSQL15 = "SELECT E.nombre, E.apellido, C.nombre_casa FROM Estudiante E JOIN Casa C ON E.id_casa = C.id_casa";
+            PreparedStatement sentencia15 = con.prepareStatement(sentenciaSQL15);
+            ResultSet resultados15 = sentencia15.executeQuery();
+
+            while(resultados15.next()){
+                String nombre = resultados15.getString("nombre");
+                String apellido = resultados15.getString("apellido");
+                String casa = resultados15.getString("nombre_casa");
+                System.out.println("Estudiante: " + nombre + " " + apellido + " | Casa: " + casa);
+            }
+
+            //sentencia 16
+
+
         }
         catch (SQLException e) {
             throw new RuntimeException(e);

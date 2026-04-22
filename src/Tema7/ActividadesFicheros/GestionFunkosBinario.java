@@ -36,7 +36,7 @@ public class GestionFunkosBinario {
 
     public void añadirFunko(Funko f) {
         listaFunkos.add(f);
-        saveFunkos(); // Actualiza el fichero binario
+        saveFunkos();
         System.out.println("Funko guardado (Serializado) con éxito.");
     }
 
@@ -72,7 +72,7 @@ public class GestionFunkosBinario {
 
     public void mostrarMediaPrecio() {
         if (listaFunkos.isEmpty()) {
-            System.out.println("La media es 0€ (lista vacía).");
+            System.out.println("La media es 0€.");
             return;
         }
         double suma = 0;

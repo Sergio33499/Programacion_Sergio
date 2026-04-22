@@ -9,7 +9,6 @@ public class Funko implements Serializable {
     private double precio;
     private int fecha;
 
-    // Constructor
     public Funko(String nombre, String modelo, double precio, int fecha) {
         this.nombre = nombre;
         this.modelo = modelo;

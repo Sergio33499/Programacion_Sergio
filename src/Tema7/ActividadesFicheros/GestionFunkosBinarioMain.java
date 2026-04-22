@@ -46,7 +46,7 @@ public class GestionFunkosBinarioMain {
                     System.out.print("Nombre del funko a borrar: ");
                     String nombreBorrar = sc.nextLine();
                     if (gestor.borrarFunko(nombreBorrar)) {
-                        System.out.println("¡Eliminado de la lista y del archivo binario!");
+                        System.out.println("Eliminado de la lista y del archivo binario");
                     } else {
                         System.out.println("No se encontró el funko.");
                     }

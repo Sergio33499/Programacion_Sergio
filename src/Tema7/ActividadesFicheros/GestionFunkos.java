@@ -24,11 +24,25 @@ public class GestionFunkos {
         if (!archivo.exists()) return lista;
 
         try (Scanner reader = new Scanner(archivo)) {
+            //Saltamos la cabecera
+            if (reader.hasNextLine()) {
+                reader.nextLine();
+            }
+
             while (reader.hasNextLine()) {
                 String linea = reader.nextLine();
+                if (linea.trim().isEmpty()) continue;
+
                 String[] datos = linea.split(",");
 
-                Funko f = new Funko(datos[0], datos[1], Double.parseDouble(datos[2]), Integer.parseInt(datos[3]));
+                String nombre = datos[1];
+                String modelo = datos[2];
+                double precio = Double.parseDouble(datos[3]); //para parsear el texto y convertirlo en numero
+
+                // Extraemos solo el año del String
+                int año = Integer.parseInt(datos[4].split("-")[0]);
+
+                Funko f = new Funko(nombre, modelo, precio, año);
                 lista.add(f);
             }
         } catch (Exception e) {

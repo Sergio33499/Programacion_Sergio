@@ -5,8 +5,11 @@ import java.util.Scanner;
 public class GestionFunkosMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // Al crear el gestor, se cargan los funkos automáticamente
-        GestionFunkos gestor = new GestionFunkos("funkos.csv");
+        // Al crear el gestor se cargan los funkos automáticamente
+        GestionFunkos gestor = new GestionFunkos("/home/serpuimar2/IdeaProjects/Programacion_Sergio/src/funkos.csv");
+
+
+
 
         int opcion;
 
@@ -79,4 +82,6 @@ public class GestionFunkosMain {
 
         sc.close();
     }
+
+
 }
