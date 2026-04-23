@@ -168,8 +168,40 @@ public class RepasoSQL {
             }
 
             //sentencia 16
+            String sentenciaSQL16 = "SELECT E.nombre, M.nombre_mascota, A.nombre_asignatura FROM Estudiante E LEFT JOIN Mascota M ON E.id_estudiante = M.id_estudiante JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante JOIN Asignatura A ON EA.id_asignatura = A.id_asignatura";
 
+            PreparedStatement sentencia16 = con.prepareStatement(sentenciaSQL16);
+            ResultSet resultados16 = sentencia16.executeQuery();
 
+            while(resultados16.next()){
+                String nombre = resultados16.getString("nombre");
+                String mascota = resultados16.getString("nombre_mascota");
+                if (mascota == null) mascota = "Ninguna";
+
+                String asignatura = resultados16.getString("nombre_asignatura");
+
+                System.out.println("Estudiante: " + nombre + " | Mascota: " + mascota + " | Asignatura: " + asignatura);
+            }
+
+            //sentencia 17
+            String sentenciaSQL17 = "SELECT E.nombre FROM Estudiante E JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante JOIN Asignatura A ON EA.id_asignatura = A.id_asignatura WHERE A.nombre_asignatura = 'Encantamientos' AND EA.calificacion > (SELECT AVG(calificacion) FROM Estudiante_Asignatura JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE nombre_asignatura = 'Encantamientos')";
+
+            PreparedStatement sentencia17 = con.prepareStatement(sentenciaSQL17);
+            ResultSet resultados17 = sentencia17.executeQuery();
+
+            while(resultados17.next()){
+                System.out.println("Estudiante por encima de la media: " + resultados17.getString("nombre"));
+            }
+
+            //sentencia 18
+            String sentenciaSQL18 = "SELECT C.nombre_casa FROM Casa C JOIN Estudiante E ON C.id_casa = E.id_casa JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante GROUP BY C.nombre_casa HAVING AVG(EA.calificacion) > 7";
+
+            PreparedStatement sentencia18 = con.prepareStatement(sentenciaSQL18);
+            ResultSet resultados18 = sentencia18.executeQuery();
+
+            while(resultados18.next()){
+                System.out.println("Casa con promedio >7: " + resultados18.getString("nombre_casa"));
+            }
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
