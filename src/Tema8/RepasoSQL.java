@@ -6,7 +6,7 @@ public class RepasoSQL {
     public static void main(String[] args){
         //Saco la consulta fuera, para poderla usar en el PreparedStatement del try
         //opcion 2: PreparedStatement
-        try(Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sergiopuig")){
+        try(Connection con = DriverManager.getConnection("jdbc:postgresql://database-1.cugxoidqvjyr.us-east-1.rds.amazonaws.com:5432/hogwarts","maestro","maestro1")){
             String sentenciaSQL = "SELECT nombre, apellido FROM Profesor";
             PreparedStatement sentencia = con.prepareStatement(sentenciaSQL);
 
@@ -37,7 +37,7 @@ public class RepasoSQL {
             }
 
             // sentencia 4
-            String sentenciaSQL4 = "SELECT nombre_casa, COUNT(id_estudiante) FROM Casa JOIN Estudiante ON Casa.id_casa = Estudiante.id_casa GROUP BY nombre_casa";
+            String sentenciaSQL4 = "SELECT C.nombre AS casa, COUNT(E.id_estudiante) FROM Casa C JOIN Estudiante E ON C.id_casa = E.id_casa GROUP BY C.nombre";
             PreparedStatement sentencia4 = con.prepareStatement(sentenciaSQL4);
 
             ResultSet resultados4 = sentencia4.executeQuery();
@@ -47,12 +47,12 @@ public class RepasoSQL {
             }
 
             // sentencia 5
-            String sentenciaSQL5 = "SELECT AVG(calificacion), MAX(calificacion) FROM Estudiante_Asignatura JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE nombre_asignatura = 'Pociones'";
+            String sentenciaSQL5 = "SELECT AVG(calificacion), MAX(calificacion) FROM Estudiante_Asignatura JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE nombre = 'Pociones'";
             PreparedStatement sentencia5 = con.prepareStatement(sentenciaSQL5);
 
             ResultSet resultados5 = sentencia5.executeQuery();
 
-            if(resultados5.next()){ // uso if porque solo devuelve una fila de results
+            if(resultados5.next()){
                 System.out.println("Pociones - Media: " + resultados5.getDouble(1) + " | Máxima: " + resultados5.getDouble(2));
             }
 
@@ -90,8 +90,7 @@ public class RepasoSQL {
             }
 
             // sentencia 9
-            String sentenciaSQL9 = "SELECT E.nombre, E.apellido FROM Estudiante E JOIN Casa C ON E.id_casa = C.id_casa WHERE E.anyo_curso = 5 AND (C.nombre_casa = 'Gryffindor' OR C.nombre_casa = 'Slytherin')";
-
+            String sentenciaSQL9 = "SELECT E.nombre, E.apellido FROM Estudiante E JOIN Casa C ON E.id_casa = C.id_casa WHERE E.anyo_curso = 5 AND (C.nombre = 'Gryffindor' OR C.nombre = 'Slytherin')";
             PreparedStatement sentencia9 = con.prepareStatement(sentenciaSQL9);
             ResultSet resultados9 = sentencia9.executeQuery();
 
@@ -112,7 +111,7 @@ public class RepasoSQL {
             }
 
             //sentencia 11
-            String sentenciaSQL11 = "SELECT E.nombre FROM Estudiante E JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante JOIN Asignatura A ON EA.id_asignatura = A.id_asignatura WHERE A.nombre_asignatura = 'Vuelo' AND EA.calificacion >= 8";
+            String sentenciaSQL11 = "SELECT E.nombre FROM Estudiante E JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante JOIN Asignatura A ON EA.id_asignatura = A.id_asignatura WHERE A.nombre = 'Vuelo' AND EA.calificacion >= 8";
             PreparedStatement sentencia11 = con.prepareStatement(sentenciaSQL11);
 
             ResultSet resultados11 = sentencia11.executeQuery();
@@ -122,7 +121,7 @@ public class RepasoSQL {
             }
 
             //sentencia 12
-            String sentenciaSQL12 = "INSERT INTO Estudiante (nombre, apellido, id_casa, anyo_curso, fecha_nacimiento) VALUES ('Nymphadora', 'Tonks', 4, 7, '1973-11-25')";
+           /* String sentenciaSQL12 = "INSERT INTO Estudiante (nombre, apellido, id_casa, anyo_curso, fecha_nacimiento) VALUES ('Nymphadora', 'Tonks', 4, 7, '1973-11-25')";
             PreparedStatement sentencia12 = con.prepareStatement(sentenciaSQL12);
 
             int filasAfectadas = sentencia12.executeUpdate();
@@ -130,10 +129,9 @@ public class RepasoSQL {
             if (filasAfectadas > 0) {
                 System.out.println("¡Estudiante insertada correctamente!");
             }
-
+        */
             //sentencia 13
-            String sentenciaSQL13 = "UPDATE Casa SET id_jefe = 7 WHERE nombre_casa = 'Hufflepuff'";
-
+            String sentenciaSQL13 = "UPDATE Casa SET id_jefe = 7 WHERE nombre = 'Hufflepuff'";
             PreparedStatement sentencia13 = con.prepareStatement(sentenciaSQL13);
 
             int filasActualizadas = sentencia13.executeUpdate();
@@ -156,35 +154,36 @@ public class RepasoSQL {
             }
 
             //sentencia 15
-            String sentenciaSQL15 = "SELECT E.nombre, E.apellido, C.nombre_casa FROM Estudiante E JOIN Casa C ON E.id_casa = C.id_casa";
+            String sentenciaSQL15 = "SELECT E.nombre, E.apellido, C.nombre AS nombre_casa FROM Estudiante E JOIN Casa C ON E.id_casa = C.id_casa";
             PreparedStatement sentencia15 = con.prepareStatement(sentenciaSQL15);
             ResultSet resultados15 = sentencia15.executeQuery();
 
             while(resultados15.next()){
                 String nombre = resultados15.getString("nombre");
                 String apellido = resultados15.getString("apellido");
+
                 String casa = resultados15.getString("nombre_casa");
+
                 System.out.println("Estudiante: " + nombre + " " + apellido + " | Casa: " + casa);
             }
 
             //sentencia 16
-            String sentenciaSQL16 = "SELECT E.nombre, M.nombre_mascota, A.nombre_asignatura FROM Estudiante E LEFT JOIN Mascota M ON E.id_estudiante = M.id_estudiante JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante JOIN Asignatura A ON EA.id_asignatura = A.id_asignatura";
+            String sentenciaSQL16 = "SELECT E.nombre AS estudiante_n, M.nombre AS mascota_n, A.nombre AS asignatura_n FROM Estudiante E LEFT JOIN Mascota M ON E.id_estudiante = M.id_estudiante JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante JOIN Asignatura A ON EA.id_asignatura = A.id_asignatura";
 
             PreparedStatement sentencia16 = con.prepareStatement(sentenciaSQL16);
             ResultSet resultados16 = sentencia16.executeQuery();
 
             while(resultados16.next()){
-                String nombre = resultados16.getString("nombre");
-                String mascota = resultados16.getString("nombre_mascota");
+                String nombre = resultados16.getString("estudiante_n");
+                String mascota = resultados16.getString("mascota_n");
+                String asignatura = resultados16.getString("asignatura_n");
+
                 if (mascota == null) mascota = "Ninguna";
-
-                String asignatura = resultados16.getString("nombre_asignatura");
-
                 System.out.println("Estudiante: " + nombre + " | Mascota: " + mascota + " | Asignatura: " + asignatura);
             }
 
             //sentencia 17
-            String sentenciaSQL17 = "SELECT E.nombre FROM Estudiante E JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante JOIN Asignatura A ON EA.id_asignatura = A.id_asignatura WHERE A.nombre_asignatura = 'Encantamientos' AND EA.calificacion > (SELECT AVG(calificacion) FROM Estudiante_Asignatura JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE nombre_asignatura = 'Encantamientos')";
+            String sentenciaSQL17 = "SELECT E.nombre FROM Estudiante E JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante JOIN Asignatura A ON EA.id_asignatura = A.id_asignatura WHERE A.nombre = 'Encantamientos' AND EA.calificacion > (SELECT AVG(calificacion) FROM Estudiante_Asignatura JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE nombre = 'Encantamientos')";
 
             PreparedStatement sentencia17 = con.prepareStatement(sentenciaSQL17);
             ResultSet resultados17 = sentencia17.executeQuery();
@@ -194,13 +193,13 @@ public class RepasoSQL {
             }
 
             //sentencia 18
-            String sentenciaSQL18 = "SELECT C.nombre_casa FROM Casa C JOIN Estudiante E ON C.id_casa = E.id_casa JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante GROUP BY C.nombre_casa HAVING AVG(EA.calificacion) > 7";
+            String sentenciaSQL18 = "SELECT C.nombre FROM Casa C JOIN Estudiante E ON C.id_casa = E.id_casa JOIN Estudiante_Asignatura EA ON E.id_estudiante = EA.id_estudiante GROUP BY C.nombre HAVING AVG(EA.calificacion) > 7";
 
             PreparedStatement sentencia18 = con.prepareStatement(sentenciaSQL18);
             ResultSet resultados18 = sentencia18.executeQuery();
 
             while(resultados18.next()){
-                System.out.println("Casa con promedio >7: " + resultados18.getString("nombre_casa"));
+                System.out.println("Casa con promedio >7: " + resultados18.getString("nombre"));
             }
         }
         catch (SQLException e) {
