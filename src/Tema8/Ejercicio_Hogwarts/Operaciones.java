@@ -1,5 +1,6 @@
 package Tema8.Ejercicio_Hogwarts;
 
+import java.net.ConnectException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,4 +56,72 @@ public class Operaciones {
             else System.out.println(nombre + " no tiene mascota.");
         } catch (SQLException e) { System.err.println(e.getMessage()); }
     }
+
+    public static void numEstudiantesCasa(){
+        String sql = "SELECT C.Nombre, COUNT (E.id_Estudiante) FROM Casa C LEFT JOIN Estudiante E ON C.id_casa = E.id_casa GROUP BY C.nombre";
+        try(Connection con = DriverManager.getConnection(URL,USER,PASS);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery()){
+            System.out.println("--- Recuento de estudiantes por casa ---");
+            while (rs.next()) {
+                System.out.println("Casa: " + rs.getString(1) + " | Estudiantes: " + rs.getInt(2));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error en recuento: " + e.getMessage());
+        }
+        }
+
+        public static void insertarNuevaAsignatura(Asignatura nueva){
+        String sql = "INSERT INTO Asignatura (nombre,aula,obligatoria) VALUES (?,?,?)";
+        try(Connection con = DriverManager.getConnection(URL,USER,PASS);
+            PreparedStatement ps = con.prepareStatement(sql)){
+
+            ps.setString(1,nueva.getNombre());
+            ps.setString(2,nueva.getAula());
+            ps.setBoolean(3, nueva.isObligatoria());
+
+            int filas = ps.executeUpdate();
+            if (filas > 0){
+                System.out.println("Asignatura '" + nueva.getNombre() + "' insertada correctamente");
+            }
+        }catch (SQLException e){
+            System.out.println("Error al insertar: " + e.getMessage());
+        }
+        }
+
+        public static void modificarAulaAsignatura(String nombreAsignatura, String nuevaAula){
+        String sql = "UPDATE Asignatura SET aula = ? WHERE nombre = ?";
+        try(Connection con = DriverManager.getConnection(URL,USER,PASS);
+            PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setString(1,nuevaAula);
+            ps.setString(2,nombreAsignatura);
+
+            int filas = ps.executeUpdate();
+            if (filas > 0){
+                System.out.println("Aula de '" + nombreAsignatura + "' actualizada a: " + nuevaAula);
+            }else {
+                System.out.println("No se encontró ninguna asignatura con el nombre: " + nombreAsignatura);
+            }
+        }catch (SQLException e){
+            System.out.println("Error al modificar aula: " + e.getMessage());
+        }
+        }
+
+        public static void eliminarAsignatura(String nombreAsignatura){
+        String sql = "DELETE FROM Asignatura WHERE nombre = ?";
+        try(Connection con = DriverManager.getConnection(URL,USER,PASS);
+            PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setString(1,nombreAsignatura);
+
+            int filas = ps.executeUpdate();
+            if (filas > 0){
+                System.out.println("Asignatura '" + nombreAsignatura + "' eliminada correctanente");
+            }else {
+                System.out.println("No se puede eliminar: no existe la asignatura '" + nombreAsignatura + "'. ");
+            }
+        }catch (SQLException e){
+            System.out.println("Error al eliminar asignatura: " + e.getMessage());
+        }
+        }
     }
+
