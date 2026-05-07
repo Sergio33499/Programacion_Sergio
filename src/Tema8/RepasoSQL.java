@@ -4,8 +4,7 @@ import java.sql.*;
 
 public class RepasoSQL {
     public static void main(String[] args){
-        //Saco la consulta fuera, para poderla usar en el PreparedStatement del try
-        //opcion 2: PreparedStatement
+
         try(Connection con = DriverManager.getConnection("jdbc:postgresql://database-1.cugxoidqvjyr.us-east-1.rds.amazonaws.com:5432/hogwarts","maestro","maestro1")){
             String sentenciaSQL = "SELECT nombre, apellido FROM Profesor";
             PreparedStatement sentencia = con.prepareStatement(sentenciaSQL);

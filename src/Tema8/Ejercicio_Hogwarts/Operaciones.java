@@ -62,7 +62,7 @@ public class Operaciones {
         try(Connection con = DriverManager.getConnection(URL,USER,PASS);
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery()){
-            System.out.println("--- Recuento de estudiantes por casa ---");
+            System.out.println("Recuento de estudiantes por casa");
             while (rs.next()) {
                 System.out.println("Casa: " + rs.getString(1) + " | Estudiantes: " + rs.getInt(2));
             }
