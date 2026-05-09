@@ -12,17 +12,25 @@ public class GestorPiloto {
 
     public static void CreatePilot(Piloto p) {
         String sql = "INSERT INTO drivers (code, forename, surname, dob, nationality) VALUES (?, ?, ?, ?, ?)";
+
         try (Connection conn = dbProperties.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, p.getCode());
             pstmt.setString(2, p.getForename());
             pstmt.setString(3, p.getSurname());
-            pstmt.setDate(4, Date.valueOf(p.getDob()));
+
+            try {
+                pstmt.setDate(4, Date.valueOf(p.getDob()));
+            } catch (IllegalArgumentException e) {
+                System.err.println("Error: Formato de fecha incorrecto. (ej: 1985-04-14)");
+                return;
+            }
             pstmt.setString(5, p.getNationality());
 
             pstmt.executeUpdate();
             System.out.println("Piloto creado correctamente.");
+
         } catch (SQLException e) {
             System.err.println("Error al crear piloto: " + e.getMessage());
         }
